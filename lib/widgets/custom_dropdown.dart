@@ -9,7 +9,7 @@ class CustomDropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+      padding: EdgeInsets.symmetric(horizontal: width * 0.1),
       width: width,
       decoration: BoxDecoration(
           color: Colors.indigo, borderRadius: BorderRadius.circular(5)),
