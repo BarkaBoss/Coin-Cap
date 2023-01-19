@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class CustomDropDown extends StatelessWidget {
   List<String> coins;
   double width;
+  String selected;
 
-  CustomDropDown({required this.coins, required this.width});
+  CustomDropDown({required this.coins, required this.width, required this.selected});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class CustomDropDown extends StatelessWidget {
           color: Colors.indigo, borderRadius: BorderRadius.circular(10)),
       child: DropdownButton(
         dropdownColor: Colors.indigo,
-        value: coins.first,
+        value: selected,
         underline: Container(),
         icon: const Icon(Icons.arrow_drop_down_sharp),
         iconSize: 30,
@@ -27,7 +28,8 @@ class CustomDropDown extends StatelessWidget {
             child: Text(e, style: const TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.w800),),
           );
         }).toList(),
-        onChanged: (_) {},
+        onChanged: (value) {
+        },
       ),
     );
   }
