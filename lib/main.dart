@@ -2,13 +2,15 @@ import 'dart:convert';
 
 import 'package:coin_cap/models/app_config.dart';
 import 'package:coin_cap/pages/home_page.dart';
+import 'package:coin_cap/services/http_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  loadConfig();
+  await loadConfig();
+  registerHttpService();
   runApp(const MyApp());
 }
 
@@ -19,6 +21,12 @@ Future<void> loadConfig() async{
     AppConfig(COIN_API_BASE_URL: configData["COIN_API_BASE_URL"])
   );
   debugPrint(configData.toString());
+}
+
+void registerHttpService(){
+  GetIt.instance.registerSingleton<HTTService>(
+    HTTService()
+  );
 }
 
 class MyApp extends StatelessWidget {
