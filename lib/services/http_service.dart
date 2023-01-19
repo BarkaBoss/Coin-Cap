@@ -15,4 +15,14 @@ class HTTService{
 
     debugPrint("base 😄 $_baseUrl");
   }
+
+  Future<Response?> get(String path) async{
+    try{
+      String url = "$_baseUrl$path";
+      Response response = await dio.get(url);
+      return response;
+    }catch(e){
+      debugPrint("Dio HTTP>> $e.toString()");
+    }
+  }
 }
