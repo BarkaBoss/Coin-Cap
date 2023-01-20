@@ -57,8 +57,10 @@ class _HomePageState extends State<HomePage> {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
           Map data = jsonDecode(snapshot.data.toString());
+          Map exchangeRates = data["market_data"]["current_price"];
           num ngnPrice = data["market_data"]["current_price"]["ngn"];
           num change24h = data["market_data"]["price_change_percentage_24h"];
+
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
@@ -69,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return DetailsPage();
+                        return DetailsPage(rates: exchangeRates,);
                       }),
                     );
                   },
